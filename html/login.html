@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <form id="form" action="">
+            <h1>Login</h1>
+            <div class="input-control">
+                <label for="ID">ID</label>
+                <input class="input" type="text" id="ID" name="ID" placeholder="Enter Your ID">
+                <small class="error" id="idError"></small> <!-- Error message for ID -->
+            </div>
+            <div class="input-control">
+                <label for="SSN">SSN</label>
+                <input class="input" type="password" id="SSN" name="SSN" placeholder="Enter Your SSN">
+                <small class="error" id="ssnError"></small> <!-- Error message for SSN -->
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>
