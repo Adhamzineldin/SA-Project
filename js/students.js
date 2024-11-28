@@ -10,23 +10,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentStudentIndex = -1;
 
-    // Get students from localStorage or initialize as empty array
+
     const students = JSON.parse(localStorage.getItem("students")) || [];
 
-    // Get subjects from localStorage
     const subjects = JSON.parse(localStorage.getItem("subjects")) || [];
 
-    // Save students to localStorage
+
     const saveStudents = () => {
         localStorage.setItem("students", JSON.stringify(students));
     };
 
-    // Render subjects in the select list for students
     const renderSubjects = () => {
         // Clear current subject options
         subjectsSelect.innerHTML = "";
 
-        // Render all subjects saved in localStorage
+
         subjects.forEach(subject => {
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
@@ -48,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    // Render students on the page
+
     const renderStudents = () => {
         studentList.innerHTML = students.length
             ? students
@@ -68,17 +66,17 @@ document.addEventListener("DOMContentLoaded", () => {
             : `<p>No students found.</p>`;
     };
 
-    // Open modal for adding or editing a student
+
     const openModal = (studentIndex = -1) => {
         if (studentIndex !== -1) {
             const student = students[studentIndex];
             nameInput.value = student.name;
             emailInput.value = student.email;
 
-            // Ensure student.subjects is defined as an array (default to an empty array if not)
+
             const subjects = student.subjects || [];
 
-            // Loop through each checkbox and check if it's in the student's subjects list
+
             Array.from(subjectsSelect.querySelectorAll('input[type="checkbox"]')).forEach(checkbox => {
                 checkbox.checked = subjects.includes(checkbox.value);  // Check if the subject is selected
             });
@@ -86,32 +84,31 @@ document.addEventListener("DOMContentLoaded", () => {
             nameInput.value = "";
             emailInput.value = "";
             Array.from(subjectsSelect.querySelectorAll('input[type="checkbox"]')).forEach(checkbox => {
-                checkbox.checked = false;  // Uncheck all when no student is selected
+                checkbox.checked = false;
             });
         }
         currentStudentIndex = studentIndex;
         modal.show();
     };
 
-    // Open modal when Add button is clicked
+
     addButton.addEventListener("click", () => {
         openModal();
     });
 
-    // Save the student when Save button is clicked
+
     saveButton.addEventListener("click", () => {
         const name = nameInput.value.trim();
         const email = emailInput.value.trim();
 
-        // Get all checked checkboxes
+
         const selectedSubjects = Array.from(subjectsSelect.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
 
         if (name && email) {
             if (currentStudentIndex === -1) {
-                // Add a new student
+
                 students.push({ name, email, subjects: selectedSubjects });
             } else {
-                // Update existing student
                 students[currentStudentIndex] = { name, email, subjects: selectedSubjects };
             }
             saveStudents();
@@ -122,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Handle editing and deleting students
+
     studentList.addEventListener("click", event => {
         const index = event.target.dataset.index;
 
@@ -135,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Filter students based on search input
+
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.toLowerCase();
         const filteredStudents = students.filter(
@@ -161,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
             : `<p>No results found.</p>`;
     });
 
-    // Initial rendering of subjects and students
+
     renderSubjects();
     renderStudents();
 });
