@@ -64,17 +64,17 @@ const validateInputs = () => {
             if (idValue.startsWith('20')) {
 
                 alert("Login Successfully");
-                window.location.href = '../html/students.html'; // Redirect to student page
+                window.location.href = '../html/adminStudentsDashboard.html'; // Redirect to student page
 
             } else if (idValue.startsWith('30')) {
 
                 alert("Login Successfully");
-                window.location.href = '../html/lecturers.html'; // Redirect to lecturer page
+                window.location.href = '../html/adminlecturersDashboard.html'; // Redirect to lecturer page
 
             } else if (idValue.startsWith('10')) {
 
                 alert("Login Successfully");
-                window.location.href = '../index.html'; // Redirect to admin page
+                window.location.href = '../html/adminDashboard.html'; // Redirect to admin page
 
             } else {
                 alert('Invalid ID prefix');
