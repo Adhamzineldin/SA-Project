@@ -55,7 +55,7 @@ const validateInputs = () => {
     if (valid) {
         // Retrieve dummy accounts from localStorage
         const accounts = JSON.parse(localStorage.getItem('dummyAccounts'));
-        
+
         // for each account find if it is equal the input value
         const account = accounts.find(account => account.id === idValue && account.ssn === ssnValue);
 
@@ -74,7 +74,7 @@ const validateInputs = () => {
             } else if (idValue.startsWith('10')) {
 
                 alert("Login Successfully");
-                window.location.href = '../html/'; // Redirect to admin page
+                window.location.href = '../index.html'; // Redirect to admin page
 
             } else {
                 alert('Invalid ID prefix');
