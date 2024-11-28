@@ -14,11 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("subjects", JSON.stringify(subjects));
     };
 
-    const renderSubjects = () => {
-        subjectList.innerHTML = subjects.length
-            ? subjects
-                  .map(
-                      (subject, index) => `
+    const renderSubjects = (subjectsToRender = subjects) => {
+        subjectList.innerHTML =
+            subjectsToRender.length > 0
+                ? subjectsToRender
+                      .map(
+                          (subject, index) => `
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm p-3">
                             <h5 class="card-title">${subject.name}</h5>
@@ -26,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             <button class="btn btn-danger delete-btn" data-index="${index}">Delete</button>
                         </div>
                     </div>`
-                  )
-                  .join("")
-            : `<p>No subjects found.</p>`;
+                      )
+                      .join("")
+                : `<p>No subjects found.</p>`;
     };
 
     const openModal = (subjectIndex = -1) => {
@@ -80,20 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const filteredSubjects = subjects.filter(subject =>
             subject.name.toLowerCase().includes(query)
         );
-        subjectList.innerHTML = filteredSubjects.length
-            ? filteredSubjects
-                  .map(
-                      subject => `
-                    <div class="col-md-4 mb-4">
-                        <div class="card shadow-sm p-3">
-                            <h5 class="card-title">${subject.name}</h5>
-                            <button class="btn btn-warning edit-btn" data-index="${index}">Edit</button>
-                            <button class="btn btn-danger delete-btn" data-index="${index}">Delete</button>
-                        </div>
-                    </div>`
-                  )
-                  .join("")
-            : `<p>No results found.</p>`;
+        renderSubjects(filteredSubjects);
     });
 
     renderSubjects();
