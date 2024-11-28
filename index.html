@@ -8,11 +8,31 @@
     <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./html/students.html">Manage Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./html/lecturers.html">Manage Lecturers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./html/subjects.html">Manage Subjects</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <header class="header">
         <h1>Admin Dashboard</h1>
         <button id="update-credentials" class="btn btn-primary">Update Credentials</button>
     </header>
-
 
     <div class="modal fade" id="updateCredentialsModal" tabindex="-1" aria-labelledby="updateCredentialsModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -41,9 +61,18 @@
 
     <main class="container">
         <div class="grid-container">
-            <a href="./html/students.html" class="card">Manage Students</a>
-            <a href="./html/lecturers.html" class="card">Manage Lecturers</a>
-            <a href="./html/subjects.html" class="card">Manage Subjects</a>
+            <a href="./html/students.html" class="card">
+                <h2>Manage Students</h2>
+                <img src="static/img.png" alt="Manage Students" class="card-image">
+            </a>
+            <a href="./html/lecturers.html" class="card">
+                <h2>Manage Lecturers</h2>
+                <img src="static/img_1.png" alt="Manage Lecturers" class="card-image">
+            </a>
+            <a href="./html/subjects.html" class="card">
+                <h2>Manage Subjects</h2>
+                <img src="static/img_2.png" alt="Manage Subjects" class="card-image">
+            </a>
         </div>
     </main>
 
